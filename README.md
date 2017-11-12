@@ -1,4 +1,5 @@
 [![NPM](https://img.shields.io/npm/v/redux-reactstrap-modal.svg)](https://www.npmjs.com/package/redux-reactstrap-modal)
+[![npm](https://img.shields.io/npm/l/redux-reactstrap-modal.svg)](https://github.com/anis-campos/redux-reactstrap-modal/blob/master/LICENCE)
 [![Build Status](https://travis-ci.org/anis-campos/redux-reactstrap-modal.svg?branch=master)](https://travis-ci.org/anis-campos/redux-reactstrap-modal)
 # redux-reactstrap-modal
 

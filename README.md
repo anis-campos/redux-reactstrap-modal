@@ -1,4 +1,5 @@
 [![NPM](https://img.shields.io/npm/v/redux-reactstrap-modal.svg)](https://www.npmjs.com/package/redux-reactstrap-modal)
+[![Build Status](https://travis-ci.org/anis-campos/redux-reactstrap-modal.svg?branch=master)](https://travis-ci.org/anis-campos/redux-reactstrap-modal)
 # redux-reactstrap-modal
 
 A Higher Order Component using react-redux to keep dialog state in a Redux store

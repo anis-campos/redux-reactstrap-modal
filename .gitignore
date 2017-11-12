@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+.idea/
+README 2.md
+build/
+examples/
+

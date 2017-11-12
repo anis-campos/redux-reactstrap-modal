@@ -1,4 +1,4 @@
-# redux-reactstrap-modal-redux
+# redux-reactstrap-modal
 A Higher Order Component using react-redux to keep dialog state in a Redux store
 
 [Inspired from suciuvlad/redux-dialog](https://github.com/suciuvlad/redux-dialog)

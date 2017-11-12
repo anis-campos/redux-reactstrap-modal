@@ -14,7 +14,8 @@
     "test": "npm run karma -- --browsers Firefox --single-run",
     "karma": "./node_modules/.bin/karma start .karma.config.js",
     "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --content-base examples/ --progress --hot --inline --watch",
-    "build": "NODE_ENV=production webpack --config webpack.production.config.js --progress"
+    "build": "NODE_ENV=production webpack --config webpack.production.config.js --progress",
+    "build:watch": "NODE_ENV=production webpack --config webpack.production.config.js --progress --watch"
   },
   "author": "Anis Campos",
   "license": "ISC",

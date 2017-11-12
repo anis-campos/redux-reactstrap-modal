@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable"));
+		module.exports = factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("prop-types"), require("seamless-immutable"));
 	else if(typeof define === 'function' && define.amd)
-		define(["normalizr", "react", "react-redux", "reactstrap", "seamless-immutable"], factory);
+		define(["normalizr", "react", "react-redux", "reactstrap", "prop-types", "seamless-immutable"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable")) : factory(root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["seamless-immutable"]);
+		var a = typeof exports === 'object' ? factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("prop-types"), require("seamless-immutable")) : factory(root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["prop-types"], root["seamless-immutable"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_9__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_10__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -154,11 +154,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.closeDialog = exports.openDialog = exports.dialogReducer = undefined;
 
-var _reduxDialog = __webpack_require__(4);
+var _reduxReactstrapModal = __webpack_require__(4);
 
-var _reduxDialog2 = _interopRequireDefault(_reduxDialog);
+var _reduxReactstrapModal2 = _interopRequireDefault(_reduxReactstrapModal);
 
-var _reducer = __webpack_require__(8);
+var _reducer = __webpack_require__(9);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -166,7 +166,7 @@ var _actions = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _reduxDialog2.default;
+exports.default = _reduxReactstrapModal2.default;
 exports.dialogReducer = _reducer2.default;
 exports.openDialog = _actions.openDialog;
 exports.closeDialog = _actions.closeDialog;
@@ -194,10 +194,14 @@ var _reactstrap = __webpack_require__(7);
 
 var _actions = __webpack_require__(0);
 
+var _propTypes = __webpack_require__(8);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var reduxReactstrapModal = function reduxReactstrapModal(defaults) {
-    var name = defaults.name;
+var reduxReactstrapModal = function reduxReactstrapModal(settings) {
+    var name = settings.name;
 
 
     return function (WrappedComponent) {
@@ -205,7 +209,7 @@ var reduxReactstrapModal = function reduxReactstrapModal(defaults) {
         var ReduxReactstrapModalContainer = function ReduxReactstrapModalContainer(props) {
             return _react2.default.createElement(
                 _reactstrap.Modal,
-                _extends({}, defaults, props),
+                _extends({}, settings, props),
                 _react2.default.createElement(WrappedComponent, props)
             );
         };
@@ -220,7 +224,6 @@ var reduxReactstrapModal = function reduxReactstrapModal(defaults) {
         var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
             return {
                 toggle: function toggle() {
-
                     dispatch((0, _actions.toggleDialog)(name));
                 },
 
@@ -236,6 +239,12 @@ var reduxReactstrapModal = function reduxReactstrapModal(defaults) {
 
         return (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModalContainer);
     };
+};
+
+reduxReactstrapModal.propTypes = {
+    settings: _propTypes2.default.shape({
+        name: _propTypes2.default.string.isRequired
+    }).isRequired
 };
 
 exports.default = reduxReactstrapModal;
@@ -260,6 +269,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -273,13 +288,13 @@ var _constants = __webpack_require__(1);
 
 var actions = _interopRequireWildcard(_constants);
 
-var _seamlessImmutable = __webpack_require__(9);
+var _seamlessImmutable = __webpack_require__(10);
 
 var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
 
 var _normalizr = __webpack_require__(2);
 
-var _schemas = __webpack_require__(10);
+var _schemas = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -317,13 +332,13 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

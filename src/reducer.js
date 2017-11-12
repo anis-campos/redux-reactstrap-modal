@@ -1,9 +1,8 @@
 import * as actions from "./constants";
 import Immutable from "seamless-immutable";
 import {normalize, schema} from "normalizr";
+import {dialogSchema} from './schemas'
 
-
-const dialogSchema = new schema.Entity('dialogs', undefined, {idAttribute: 'name'});
 
 
 const initialState = Immutable({

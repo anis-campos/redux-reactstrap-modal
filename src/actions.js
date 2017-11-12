@@ -24,7 +24,7 @@ export function closeDialog(name) {
         type: c.CLOSE_DIALOG,
         dialog: {
             name: name,
-            open: true
+            open: false
         }
     }
 }

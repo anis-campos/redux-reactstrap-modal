@@ -1,6 +1,6 @@
-import reduxDialog from './redux-dialog';
+import reduxReactstrapModal from './redux-reactstrap-modal';
 import dialogReducer from './reducer';
-import { openDialog, closeDialog } from './actions';
+import {openDialog, closeDialog} from './actions';
 
-export default reduxDialog;
-export { dialogReducer, openDialog, closeDialog };
+export default reduxReactstrapModal;
+export {dialogReducer, openDialog, closeDialog};

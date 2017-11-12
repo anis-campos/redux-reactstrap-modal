@@ -1,6 +1,6 @@
 import * as actions from "./constants";
 import Immutable from "seamless-immutable";
-import {normalize, schema} from "normalizr";
+import {normalize} from "normalizr";
 import {dialogSchema} from './schemas'
 
 

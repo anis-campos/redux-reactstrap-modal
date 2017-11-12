@@ -2,18 +2,17 @@ import React from 'react'
 import {connect} from "react-redux";
 import {Modal} from "reactstrap";
 import {toggleDialog} from "./actions";
+import PropTypes from 'prop-types';
 
-const reduxReactstrapModal = (defaults) => {
+const reduxReactstrapModal = (settings) => {
 
-    const {
-        name
-    } = defaults;
+    const {name} = settings;
 
     return (WrappedComponent) => {
 
         const ReduxReactstrapModalContainer = (props) => {
             return (
-                <Modal {...defaults} {...props}>
+                <Modal {...settings} {...props}>
                     <WrappedComponent {...props} />
                 </Modal>
             );
@@ -28,7 +27,6 @@ const reduxReactstrapModal = (defaults) => {
 
         const mapDispatchToProps = (dispatch, props) => ({
             toggle: () => {
-
                 dispatch(toggleDialog(name))
             },
 
@@ -45,5 +43,12 @@ const reduxReactstrapModal = (defaults) => {
 
     };
 };
+
+reduxReactstrapModal.propTypes = {
+    settings: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+    }).isRequired
+};
+
 
 export default reduxReactstrapModal;

@@ -22,7 +22,8 @@ const reduxReactstrapModal = (settings) => {
 
             let modal = state.dialogReducer.dialogs[name];
             let isOpen = modal && modal.open;
-            return {isOpen: isOpen};
+            let data = modal ? modal.data : undefined;
+            return {isOpen: isOpen, data: data};
         };
 
         const mapDispatchToProps = (dispatch, props) => ({

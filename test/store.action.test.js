@@ -7,7 +7,19 @@ describe('Open dialog', () => {
             type: c.OPEN_DIALOG,
             dialog: {
                 name: "modal1",
-                open: true
+                open: true,
+                data:undefined
+            }
+        })
+    });
+
+    it('should create an action to open a dialog with data', () => {
+        expect(actions.openDialog('modal1',{a:{nested:{object:"works"}}})).to.deep.equal({
+            type: c.OPEN_DIALOG,
+            dialog: {
+                name: "modal1",
+                open: true,
+                data:{a:{nested:{object:"works"}}}
             }
         })
     });

@@ -1,14 +1,21 @@
 import * as c from "./constants";
+import PropTypes from 'prop-types';
 
-export function openDialog(name) {
+export function openDialog(name, data) {
     return {
         type: c.OPEN_DIALOG,
         dialog: {
             name: name,
-            open: true
+            open: true,
+            data: data
         }
     }
 }
+
+openDialog.propTypes = {
+    name: PropTypes.string.isRequired,
+    data: PropTypes.object,
+};
 
 export const toggleDialog = (name) => {
     return {
@@ -17,6 +24,10 @@ export const toggleDialog = (name) => {
             name: name,
         }
     }
+};
+
+toggleDialog.propTypes = {
+    name: PropTypes.string.isRequired,
 };
 
 export function closeDialog(name) {
@@ -28,3 +39,8 @@ export function closeDialog(name) {
         }
     }
 }
+
+closeDialog.propTypes = {
+    name: PropTypes.string.isRequired,
+};
+

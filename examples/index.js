@@ -3,7 +3,7 @@ import {render} from "react-dom";
 import reduxDialog, {dialogReducer, openDialog} from "../src";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
-import {ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {Button,ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 import "bootstrap/dist/css/bootstrap.min.css";

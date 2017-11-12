@@ -13,7 +13,13 @@ module.exports = {
         publicPath: '/',
         filename: "index.js"
     },
-
+    resolve: {
+        extensions: [".js", ".jsx"],
+        alias: {
+            jquery: "jquery/src/jquery",
+            'sinon': 'sinon/pkg/sinon'
+        }
+    },
     module: {
         rules: [
             {
@@ -43,7 +49,13 @@ module.exports = {
             {test: /\.scss$/, loader: 'style!css!sass'}
         ]
     },
-    plugins: [new HtmlWebpackPlugin(), new ReactRootPlugin('app'), new OpenBrowserPlugin({url: 'http://localhost:9000'})],
+    plugins: [new HtmlWebpackPlugin(), new ReactRootPlugin('app'), new OpenBrowserPlugin({url: 'http://localhost:9000'}),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        })
+    ],
 
     devServer: {
         contentBase: path.join(__dirname, "public"),

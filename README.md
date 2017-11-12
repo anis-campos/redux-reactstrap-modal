@@ -19,11 +19,15 @@ npm start
 
 The easiest way to use redux-reactstrap-modal is to install it from NPM and include it in your own React build process
 
-**NPM:**
-```npm install --save redux-reactstrap-modal```
+### NPM:
+```
+npm install --save redux-reactstrap-modal
+```
 
-**YARN:**
-```yarn add redux-reactstrap-modal```
+### YARN:
+```
+yarn add redux-reactstrap-modal
+```
 
 ## Usage
 

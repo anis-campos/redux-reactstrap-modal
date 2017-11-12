@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable"), require("normalizr"));
+		module.exports = factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "react-redux", "reactstrap", "seamless-immutable", "normalizr"], factory);
+		define(["normalizr", "react", "react-redux", "reactstrap", "seamless-immutable"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable"), require("normalizr")) : factory(root["react"], root["react-redux"], root["reactstrap"], root["seamless-immutable"], root["normalizr"]);
+		var a = typeof exports === 'object' ? factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable")) : factory(root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["seamless-immutable"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_9__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_9__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -117,7 +117,7 @@ function closeDialog(name) {
         type: c.CLOSE_DIALOG,
         dialog: {
             name: name,
-            open: true
+            open: false
         }
     };
 }
@@ -138,6 +138,12 @@ var TOGGLE_DIALOG = exports.TOGGLE_DIALOG = 'TOGGLE_DIALOG';
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -148,11 +154,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.closeDialog = exports.openDialog = exports.dialogReducer = undefined;
 
-var _reduxDialog = __webpack_require__(3);
+var _reduxDialog = __webpack_require__(4);
 
 var _reduxDialog2 = _interopRequireDefault(_reduxDialog);
 
-var _reducer = __webpack_require__(7);
+var _reducer = __webpack_require__(8);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -166,7 +172,7 @@ exports.openDialog = _actions.openDialog;
 exports.closeDialog = _actions.closeDialog;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -178,13 +184,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(6);
 
-var _reactstrap = __webpack_require__(6);
+var _reactstrap = __webpack_require__(7);
 
 var _actions = __webpack_require__(0);
 
@@ -235,12 +241,6 @@ var reduxReactstrapModal = function reduxReactstrapModal(defaults) {
 exports.default = reduxReactstrapModal;
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
@@ -254,6 +254,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -267,17 +273,17 @@ var _constants = __webpack_require__(1);
 
 var actions = _interopRequireWildcard(_constants);
 
-var _seamlessImmutable = __webpack_require__(8);
+var _seamlessImmutable = __webpack_require__(9);
 
 var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
 
-var _normalizr = __webpack_require__(9);
+var _normalizr = __webpack_require__(2);
+
+var _schemas = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var dialogSchema = new _normalizr.schema.Entity('dialogs', undefined, { idAttribute: 'name' });
 
 var initialState = (0, _seamlessImmutable2.default)({
     dialogs: {}
@@ -289,7 +295,7 @@ exports.default = function () {
 
 
     var normalized = (0, _normalizr.normalize)(action, {
-        dialog: dialogSchema
+        dialog: _schemas.dialogSchema
     }).entities;
 
     switch (action.type) {
@@ -311,16 +317,26 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
-
-/***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.dialogSchema = undefined;
+
+var _normalizr = __webpack_require__(2);
+
+var dialogSchema = exports.dialogSchema = new _normalizr.schema.Entity('dialogs', undefined, { idAttribute: 'name' });
 
 /***/ })
 /******/ ]);

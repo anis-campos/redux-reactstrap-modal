@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        'redux.dialog': path.join(__dirname,"src","index.js"),
-        'redux.dialog.min': path.join(__dirname,"src","index.js")
+        'redux.reactstrap.modal': path.join(__dirname,"src","index.js"),
+        'redux.reactstrap.modal.min': path.join(__dirname,"src","index.js")
     },
     output: {
         path: path.join(__dirname,"build"),
@@ -21,7 +21,8 @@ module.exports = {
         'react-transition-group',
         'reactstrap',
         'redux',
-        'seamless-immutable'
+        'seamless-immutable',
+        'prop-types'
     ],
 
     module: {

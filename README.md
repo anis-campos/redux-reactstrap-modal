@@ -80,7 +80,7 @@ The reduxDialog method only requires the name property to work. The rest of the 
 #### `name`: string *[Required]*
 A unique id for this dialog
 
-### `data` : object *[Optional]*
+#### `data` : object *[Optional]*
 A data object that will be passed to the modal as a property. Usefull to send data from the modal parent
 
 

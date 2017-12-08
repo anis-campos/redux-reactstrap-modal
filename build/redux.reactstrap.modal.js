@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("prop-types"), require("seamless-immutable"));
+		module.exports = factory(require("prop-types"), require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable"));
 	else if(typeof define === 'function' && define.amd)
-		define(["normalizr", "react", "react-redux", "reactstrap", "prop-types", "seamless-immutable"], factory);
+		define(["prop-types", "normalizr", "react", "react-redux", "reactstrap", "seamless-immutable"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("prop-types"), require("seamless-immutable")) : factory(root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["prop-types"], root["seamless-immutable"]);
+		var a = typeof exports === 'object' ? factory(require("prop-types"), require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable")) : factory(root["prop-types"], root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["seamless-immutable"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_10__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_10__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -91,17 +91,29 @@ var _constants = __webpack_require__(1);
 
 var c = _interopRequireWildcard(_constants);
 
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-function openDialog(name) {
+function openDialog(name, data) {
     return {
         type: c.OPEN_DIALOG,
         dialog: {
             name: name,
-            open: true
+            open: true,
+            data: data
         }
     };
 }
+
+openDialog.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    data: _propTypes2.default.object
+};
 
 var toggleDialog = exports.toggleDialog = function toggleDialog(name) {
     return {
@@ -110,6 +122,10 @@ var toggleDialog = exports.toggleDialog = function toggleDialog(name) {
             name: name
         }
     };
+};
+
+toggleDialog.propTypes = {
+    name: _propTypes2.default.string.isRequired
 };
 
 function closeDialog(name) {
@@ -121,6 +137,10 @@ function closeDialog(name) {
         }
     };
 }
+
+closeDialog.propTypes = {
+    name: _propTypes2.default.string.isRequired
+};
 
 /***/ }),
 /* 1 */
@@ -144,6 +164,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -154,7 +180,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.closeDialog = exports.openDialog = exports.dialogReducer = undefined;
 
-var _reduxReactstrapModal = __webpack_require__(4);
+var _reduxReactstrapModal = __webpack_require__(5);
 
 var _reduxReactstrapModal2 = _interopRequireDefault(_reduxReactstrapModal);
 
@@ -172,7 +198,7 @@ exports.openDialog = _actions.openDialog;
 exports.closeDialog = _actions.closeDialog;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -184,17 +210,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(6);
+var _reactRedux = __webpack_require__(7);
 
-var _reactstrap = __webpack_require__(7);
+var _reactstrap = __webpack_require__(8);
 
 var _actions = __webpack_require__(0);
 
-var _propTypes = __webpack_require__(8);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -218,7 +244,8 @@ var reduxReactstrapModal = function reduxReactstrapModal(settings) {
 
             var modal = state.dialogReducer.dialogs[name];
             var isOpen = modal && modal.open;
-            return { isOpen: isOpen };
+            var data = modal ? modal.data : undefined;
+            return { isOpen: isOpen, data: data };
         };
 
         var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
@@ -248,12 +275,6 @@ reduxReactstrapModal.propTypes = {
 };
 
 exports.default = reduxReactstrapModal;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
 
 /***/ }),
 /* 6 */
@@ -292,7 +313,7 @@ var _seamlessImmutable = __webpack_require__(10);
 
 var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
 
-var _normalizr = __webpack_require__(2);
+var _normalizr = __webpack_require__(3);
 
 var _schemas = __webpack_require__(11);
 
@@ -349,7 +370,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.dialogSchema = undefined;
 
-var _normalizr = __webpack_require__(2);
+var _normalizr = __webpack_require__(3);
 
 var dialogSchema = exports.dialogSchema = new _normalizr.schema.Entity('dialogs', undefined, { idAttribute: 'name' });
 

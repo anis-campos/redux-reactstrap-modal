@@ -19,7 +19,7 @@ const reduxReactstrapModal = (settings) => {
         };
 
         const mapStateToProps = (state) => {
-            if (state.dialogReducer.dialogs.length && state.dialogReducer.dialogs[name] !== undefined) {
+            if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
               const modal = state.dialogReducer.dialogs[name];
               const isOpen = modal && modal.open;
               const data = modal ? modal.data : undefined;

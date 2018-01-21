@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("prop-types"), require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable")) : factory(root["prop-types"], root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["seamless-immutable"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_10__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_10__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -241,11 +241,13 @@ var reduxReactstrapModal = function reduxReactstrapModal(settings) {
         };
 
         var mapStateToProps = function mapStateToProps(state) {
-
-            var modal = state.dialogReducer.dialogs[name];
-            var isOpen = modal && modal.open;
-            var data = modal ? modal.data : undefined;
-            return { isOpen: isOpen, data: data };
+            if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
+                var modal = state.dialogReducer.dialogs[name];
+                var isOpen = modal && modal.open;
+                var data = modal ? modal.data : undefined;
+                return { isOpen: isOpen, data: data };
+            }
+            return { isOpen: false, data: {} };
         };
 
         var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {

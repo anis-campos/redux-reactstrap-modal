@@ -1,6 +1,6 @@
 {
   "name": "redux-reactstrap-modal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Higher Order Component using react-redux to keep modal state in a Redux store",
   "main": "build/redux.reactstrap.modal.js",
   "repository": {

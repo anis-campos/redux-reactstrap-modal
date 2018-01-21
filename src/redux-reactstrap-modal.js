@@ -19,13 +19,15 @@ const reduxReactstrapModal = (settings) => {
         };
 
         const mapStateToProps = (state) => {
-
-            let modal = state.dialogReducer.dialogs[name];
-            let isOpen = modal && modal.open;
-            let data = modal ? modal.data : undefined;
-            return {isOpen: isOpen, data: data};
+            if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
+              const modal = state.dialogReducer.dialogs[name];
+              const isOpen = modal && modal.open;
+              const data = modal ? modal.data : undefined;
+              return { isOpen, data };
+            }
+            return { isOpen: false, data: {} }
         };
-
+        
         const mapDispatchToProps = (dispatch, props) => ({
             toggle: () => {
                 dispatch(toggleDialog(name))

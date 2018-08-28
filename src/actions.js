@@ -9,7 +9,7 @@ export function openDialog(name, data) {
             open: true,
             data: data
         }
-    }
+    };
 }
 
 openDialog.propTypes = {
@@ -23,7 +23,7 @@ export const toggleDialog = (name) => {
         dialog: {
             name: name,
         }
-    }
+    };
 };
 
 toggleDialog.propTypes = {
@@ -37,7 +37,7 @@ export function closeDialog(name) {
             name: name,
             open: false
         }
-    }
+    };
 }
 
 closeDialog.propTypes = {

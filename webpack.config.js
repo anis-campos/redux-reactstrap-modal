@@ -5,17 +5,18 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 
 module.exports = {
+    mode: 'development',
     devtool: 'eval-source-map',
-    entry: path.join(__dirname, "examples", "index.js"),
+    entry: path.join(__dirname, 'examples', 'index.js'),
     output: {
-        path: path.join(__dirname, "dist"),
+        path: path.join(__dirname, 'dist'),
         publicPath: '/',
-        filename: "index.js"
+        filename: 'index.js'
     },
     resolve: {
-        extensions: [".js", ".jsx"],
+        extensions: ['.js', '.jsx'],
         alias: {
-            jquery: "jquery/src/jquery",
+            jquery: 'jquery/src/jquery',
             'sinon': 'sinon/pkg/sinon'
         }
     },
@@ -27,7 +28,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"]
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             }, {
@@ -39,11 +40,11 @@ module.exports = {
             }, {
                 test: /\.less$/,
                 use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
+                    loader: 'style-loader' // creates style nodes from JS strings
                 }, {
-                    loader: "css-loader" // translates CSS into CommonJS
+                    loader: 'css-loader' // translates CSS into CommonJS
                 }, {
-                    loader: "less-loader" // compiles Less to CSS
+                    loader: 'less-loader' // compiles Less to CSS
                 }]
             }
         ]
@@ -52,7 +53,8 @@ module.exports = {
         inject: false,
         template: require('html-webpack-template'),
         appMountId: 'app',
-    }), new OpenBrowserPlugin({url: 'http://localhost:9000'}),
+    }),
+        new OpenBrowserPlugin({url: 'http://localhost:9000'}),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -61,7 +63,7 @@ module.exports = {
     ],
 
     devServer: {
-        contentBase: path.join(__dirname, "public"),
+        contentBase: path.join(__dirname, 'public'),
         compress: true,
         port: 9000
     }

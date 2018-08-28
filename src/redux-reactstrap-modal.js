@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {connect} from "react-redux";
 import {Modal} from "reactstrap";
 import {toggleDialog} from "./actions";
@@ -20,17 +20,17 @@ const reduxReactstrapModal = (settings) => {
 
         const mapStateToProps = (state) => {
             if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
-              const modal = state.dialogReducer.dialogs[name];
-              const isOpen = modal && modal.open;
-              const data = modal ? modal.data : undefined;
-              return { isOpen, data };
+                const modal = state.dialogReducer.dialogs[name];
+                const isOpen = modal && modal.open;
+                const data = modal ? modal.data : undefined;
+                return {isOpen, data};
             }
-            return { isOpen: false, data: {} }
+            return {isOpen: false, data: {}};
         };
-        
+
         const mapDispatchToProps = (dispatch, props) => ({
             toggle: () => {
-                dispatch(toggleDialog(name))
+                dispatch(toggleDialog(name));
             },
 
             onOpened: () => {

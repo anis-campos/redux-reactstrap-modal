@@ -1,5 +1,5 @@
-import * as actions from '../src/actions'
-import * as c from '../src/constants'
+import * as actions from '../src/actions';
+import * as c from '../src/constants';
 
 describe('Open dialog', () => {
     it('should create an action to open a dialog', () => {
@@ -8,20 +8,20 @@ describe('Open dialog', () => {
             dialog: {
                 name: "modal1",
                 open: true,
-                data:undefined
+                data: undefined
             }
-        })
+        });
     });
 
     it('should create an action to open a dialog with data', () => {
-        expect(actions.openDialog('modal1',{a:{nested:{object:"works"}}})).to.deep.equal({
+        expect(actions.openDialog('modal1', {a: {nested: {object: "works"}}})).to.deep.equal({
             type: c.OPEN_DIALOG,
             dialog: {
                 name: "modal1",
                 open: true,
-                data:{a:{nested:{object:"works"}}}
+                data: {a: {nested: {object: "works"}}}
             }
-        })
+        });
     });
 });
 
@@ -33,7 +33,7 @@ describe('Close dialog', () => {
                 name: "modal1",
                 open: false
             }
-        })
+        });
     });
 });
 

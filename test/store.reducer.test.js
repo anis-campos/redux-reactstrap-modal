@@ -1,8 +1,7 @@
-import reducer from '../src/reducer'
+import reducer from '../src/reducer';
 import {normalize} from "normalizr";
-import {dialogSchema} from '../src/schemas'
-import * as actions from '../src/actions'
-import * as c from '../src/constants'
+import {dialogSchema} from '../src/schemas';
+import * as actions from '../src/actions';
 
 describe('modal reducer', () => {
 
@@ -21,7 +20,7 @@ describe('modal reducer', () => {
         const initialState = {
             dialogs: {}
         };
-        expect(reducer(undefined, {})).to.deep.equal(initialState)
+        expect(reducer(undefined, {})).to.deep.equal(initialState);
     });
 
 

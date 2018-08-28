@@ -12,6 +12,7 @@
   "scripts": {
     "test:dev": "./node_modules/.bin/karma start",
     "test": "npm run karma -- --browsers Firefox --single-run",
+    "pretest": "./node_modules/eslint/bin/eslint.js .",
     "karma": "./node_modules/.bin/karma start .karma.config.js",
     "dev": "./node_modules/.bin/webpack-dev-server --mode development --config webpack.config.js --content-base examples/ --progress --hot --inline --watch",
     "build": "NODE_ENV=production webpack --mode production --config webpack.production.config.js --progress"

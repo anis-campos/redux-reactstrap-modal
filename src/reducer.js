@@ -1,7 +1,7 @@
 import * as actions from "./constants";
 import Immutable from "seamless-immutable";
 import {normalize} from "normalizr";
-import {dialogSchema} from './schemas'
+import {dialogSchema} from './schemas';
 
 
 
@@ -33,4 +33,4 @@ export default (state = initialState, action) => {
         default:
             return state;
     }
-}
+};

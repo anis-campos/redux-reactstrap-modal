@@ -46,9 +46,7 @@ module.exports = (config) => {
                 noParse: [
                     /node_modules\/sinon\//
                 ],
-                preLoaders: webpack.module.preLoaders,
-                loaders: webpack.module.loaders,
-                rules:webpack.module.rules,
+                rules: webpack.module.rules,
 
             },
             stats: {
@@ -118,4 +116,4 @@ module.exports = (config) => {
         // how many browser should be started simultaneous
         concurrency: Infinity
     })
-}
+};

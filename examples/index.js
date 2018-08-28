@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {render} from "react-dom";
 import reduxDialog, {dialogReducer, openDialog} from "../src";
 import {combineReducers, createStore} from "redux";
@@ -40,7 +40,7 @@ const App = () => (
     <Provider store={store}>
         <div>
             <Dialog />
-            <button onClick={() => store.dispatch(openDialog('testDialog'))} href="#">Open Dialog 2</button>
+            <button onClick={() => store.dispatch(openDialog('testDialog'))}>Open Dialog 2</button>
         </div>
     </Provider>
 );

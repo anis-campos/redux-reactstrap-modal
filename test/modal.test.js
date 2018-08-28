@@ -1,17 +1,14 @@
 import {expect} from 'chai';
-import {configure, mount, shallow} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-16';
-
-configure({adapter: new Adapter()});
-
-
 import React, {Component} from "react";
-import {render} from "react-dom";
 import reduxDialog, {dialogReducer, openDialog} from "../src";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+
+configure({adapter: new Adapter()});
 
 const reducers = {
     dialogReducer: dialogReducer
@@ -23,7 +20,7 @@ const store = createStore(reducer);
 
 class Test extends Component {
     render() {
-        return <div className="test">Test</div>
+        return <div className="test">Test</div>;
     }
 }
 
@@ -53,15 +50,16 @@ const App = () => (
     <Provider store={store}>
         <div>
             <Dialog/>
-            <a className="openModal" onClick={() => store.dispatch(openDialog('testDialog', {number: 10}))} href="#">Open
-                Dialog 2</a>
+            <button className="openModal" onClick={() => store.dispatch(openDialog('testDialog', {number: 10}))}>Open
+                Dialog 2
+            </button>
         </div>
     </Provider>
 );
 describe('Testing Component', () => {
     it('Should Mount', () => {
         sinon.spy(Dialog.prototype, 'componentDidMount');
-        const wrapper = mount(<App/>);
+        mount(<App/>);
         expect(Dialog.prototype.componentDidMount).to.have.property('callCount', 1);
         Dialog.prototype.componentDidMount.restore();
     });
@@ -74,10 +72,10 @@ describe('Testing Component', () => {
         wrapper.find('.openModal').simulate('click');
         expect(wrapper.find(Provider).props().store.getState().dialogReducer.dialogs).to.deep.equal({
             testDialog: {
-                name:"testDialog",
+                name: "testDialog",
                 open: true,
                 data: {number: 10}
             }
         });
-    })
+    });
 });

@@ -40,7 +40,7 @@ const App = () => (
     <Provider store={store}>
         <div>
             <Dialog />
-            <a onClick={() => store.dispatch(openDialog('testDialog'))} href="#">Open Dialog 2</a>
+            <button onClick={() => store.dispatch(openDialog('testDialog'))} href="#">Open Dialog 2</button>
         </div>
     </Provider>
 );

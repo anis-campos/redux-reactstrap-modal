@@ -1,16 +1,27 @@
 const webpack = require('webpack');
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = {
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                include: /\.min\.js$/
+            })
+        ]
+    },
     entry: {
-        'redux.reactstrap.modal': path.join(__dirname,"src","index.js"),
-        'redux.reactstrap.modal.min': path.join(__dirname,"src","index.js")
+        'redux.reactstrap.modal': path.join(__dirname, "src", "index.js"),
+        'redux.reactstrap.modal.min': path.join(__dirname, "src", "index.js")
     },
     output: {
-        path: path.join(__dirname,"build"),
+        path: path.join(__dirname, "build"),
         libraryTarget: 'umd',
         filename: "[name].js"
     },
+
+    devtool: 'source-map',
 
     externals: [
         'bootstrap',
@@ -22,7 +33,9 @@ module.exports = {
         'reactstrap',
         'redux',
         'seamless-immutable',
-        'prop-types'
+        'prop-types',
+        'jquery',
+        'popper.js'
     ],
 
     module: {
@@ -33,7 +46,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react']
+                        presets: ["@babel/preset-env", "@babel/preset-react"]
                     }
                 }
             },
@@ -42,11 +55,14 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: "eslint-loader",
                 exclude: /node_modules/
-            },
-            {
+            }, {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             }, {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
                 test: /\.less$/,
                 use: [{
                     loader: "style-loader" // creates style nodes from JS strings
@@ -56,22 +72,12 @@ module.exports = {
                     loader: "less-loader" // compiles Less to CSS
                 }]
             }
-        ],
-        loaders: [
-            {test: /\.scss$/, loader: 'style!css!sass'}
         ]
     },
 
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            include: /\.min\.js$/,
-            minimize: true,
-            compress: {
-                warnings: false
-            }
         })
     ]
-}
+};

@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const ReactRootPlugin = require('html-webpack-react-root-plugin');
 
 
 module.exports = {
@@ -28,12 +27,15 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react']
+                        presets: ["@babel/preset-env", "@babel/preset-react"]
                     }
                 }
             }, {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            }, {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }, {
                 test: /\.less$/,
                 use: [{
@@ -44,12 +46,13 @@ module.exports = {
                     loader: "less-loader" // compiles Less to CSS
                 }]
             }
-        ],
-        loaders: [
-            {test: /\.scss$/, loader: 'style!css!sass'}
         ]
     },
-    plugins: [new HtmlWebpackPlugin(), new ReactRootPlugin('app'), new OpenBrowserPlugin({url: 'http://localhost:9000'}),
+    plugins: [new HtmlWebpackPlugin({
+        inject: false,
+        template: require('html-webpack-template'),
+        appMountId: 'app',
+    }), new OpenBrowserPlugin({url: 'http://localhost:9000'}),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',

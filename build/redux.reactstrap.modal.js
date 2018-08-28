@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("prop-types"), require("normalizr"), require("react"), require("react-redux"), require("reactstrap"), require("seamless-immutable")) : factory(root["prop-types"], root["normalizr"], root["react"], root["react-redux"], root["reactstrap"], root["seamless-immutable"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_10__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -46,12 +46,32 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -69,313 +89,227 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.toggleDialog = undefined;
-exports.openDialog = openDialog;
-exports.closeDialog = closeDialog;
-
-var _constants = __webpack_require__(1);
-
-var c = _interopRequireWildcard(_constants);
-
-var _propTypes = __webpack_require__(2);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function openDialog(name, data) {
-    return {
-        type: c.OPEN_DIALOG,
-        dialog: {
-            name: name,
-            open: true,
-            data: data
-        }
-    };
-}
-
-openDialog.propTypes = {
-    name: _propTypes2.default.string.isRequired,
-    data: _propTypes2.default.object
-};
-
-var toggleDialog = exports.toggleDialog = function toggleDialog(name) {
-    return {
-        type: c.TOGGLE_DIALOG,
-        dialog: {
-            name: name
-        }
-    };
-};
-
-toggleDialog.propTypes = {
-    name: _propTypes2.default.string.isRequired
-};
-
-function closeDialog(name) {
-    return {
-        type: c.CLOSE_DIALOG,
-        dialog: {
-            name: name,
-            open: false
-        }
-    };
-}
-
-closeDialog.propTypes = {
-    name: _propTypes2.default.string.isRequired
-};
+module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var OPEN_DIALOG = exports.OPEN_DIALOG = 'OPEN_DIALOG';
-var CLOSE_DIALOG = exports.CLOSE_DIALOG = 'CLOSE_DIALOG';
-var TOGGLE_DIALOG = exports.TOGGLE_DIALOG = 'TOGGLE_DIALOG';
+module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.closeDialog = exports.openDialog = exports.dialogReducer = undefined;
-
-var _reduxReactstrapModal = __webpack_require__(5);
-
-var _reduxReactstrapModal2 = _interopRequireDefault(_reduxReactstrapModal);
-
-var _reducer = __webpack_require__(9);
-
-var _reducer2 = _interopRequireDefault(_reducer);
-
-var _actions = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _reduxReactstrapModal2.default;
-exports.dialogReducer = _reducer2.default;
-exports.openDialog = _actions.openDialog;
-exports.closeDialog = _actions.closeDialog;
+module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(7);
-
-var _reactstrap = __webpack_require__(8);
-
-var _actions = __webpack_require__(0);
-
-var _propTypes = __webpack_require__(2);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var reduxReactstrapModal = function reduxReactstrapModal(settings) {
-    var name = settings.name;
-
-
-    return function (WrappedComponent) {
-
-        var ReduxReactstrapModalContainer = function ReduxReactstrapModalContainer(props) {
-            return _react2.default.createElement(
-                _reactstrap.Modal,
-                _extends({}, settings, props),
-                _react2.default.createElement(WrappedComponent, props)
-            );
-        };
-
-        var mapStateToProps = function mapStateToProps(state) {
-            if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
-                var modal = state.dialogReducer.dialogs[name];
-                var isOpen = modal && modal.open;
-                var data = modal ? modal.data : undefined;
-                return { isOpen: isOpen, data: data };
-            }
-            return { isOpen: false, data: {} };
-        };
-
-        var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
-            return {
-                toggle: function toggle() {
-                    dispatch((0, _actions.toggleDialog)(name));
-                },
-
-                onOpened: function onOpened() {
-                    props.onOpened && props.onOpened();
-                },
-
-                onClosed: function onClosed() {
-                    props.onClosed && props.onClosed();
-                }
-            };
-        };
-
-        return (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModalContainer);
-    };
-};
-
-reduxReactstrapModal.propTypes = {
-    settings: _propTypes2.default.shape({
-        name: _propTypes2.default.string.isRequired
-    }).isRequired
-};
-
-exports.default = reduxReactstrapModal;
+module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(2);
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+
+// EXTERNAL MODULE: external "react-redux"
+var external_react_redux_ = __webpack_require__(3);
+
+// EXTERNAL MODULE: external "reactstrap"
+var external_reactstrap_ = __webpack_require__(4);
+
+// CONCATENATED MODULE: ./src/constants.js
+var OPEN_DIALOG = 'OPEN_DIALOG';
+var CLOSE_DIALOG = 'CLOSE_DIALOG';
+var TOGGLE_DIALOG = 'TOGGLE_DIALOG';
+// EXTERNAL MODULE: external "prop-types"
+var external_prop_types_ = __webpack_require__(0);
+var external_prop_types_default = /*#__PURE__*/__webpack_require__.n(external_prop_types_);
+
+// CONCATENATED MODULE: ./src/actions.js
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _constants = __webpack_require__(1);
-
-var actions = _interopRequireWildcard(_constants);
-
-var _seamlessImmutable = __webpack_require__(10);
-
-var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
-
-var _normalizr = __webpack_require__(3);
-
-var _schemas = __webpack_require__(11);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var initialState = (0, _seamlessImmutable2.default)({
-    dialogs: {}
-});
-
-exports.default = function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
-
-
-    var normalized = (0, _normalizr.normalize)(action, {
-        dialog: _schemas.dialogSchema
-    }).entities;
-
-    switch (action.type) {
-        case actions.OPEN_DIALOG:
-            return state.merge(normalized, { deep: true });
-
-        case actions.CLOSE_DIALOG:
-            return state.merge(normalized, { deep: true });
-
-        case actions.TOGGLE_DIALOG:
-
-            return state.updateIn(["dialogs", action.dialog.name, "open"], function (open) {
-                return !open;
-            });
-
-        default:
-            return state;
+function openDialog(name, data) {
+  return {
+    type: OPEN_DIALOG,
+    dialog: {
+      name: name,
+      open: true,
+      data: data
     }
+  };
+}
+openDialog.propTypes = {
+  name: external_prop_types_default.a.string.isRequired,
+  data: external_prop_types_default.a.object
+};
+var actions_toggleDialog = function toggleDialog(name) {
+  return {
+    type: TOGGLE_DIALOG,
+    dialog: {
+      name: name
+    }
+  };
+};
+actions_toggleDialog.propTypes = {
+  name: external_prop_types_default.a.string.isRequired
+};
+function closeDialog(name) {
+  return {
+    type: CLOSE_DIALOG,
+    dialog: {
+      name: name,
+      open: false
+    }
+  };
+}
+closeDialog.propTypes = {
+  name: external_prop_types_default.a.string.isRequired
+};
+// CONCATENATED MODULE: ./src/redux-reactstrap-modal.js
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(settings) {
+  var name = settings.name;
+  return function (WrappedComponent) {
+    var ReduxReactstrapModalContainer = function ReduxReactstrapModalContainer(props) {
+      return external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, props), external_react_default.a.createElement(WrappedComponent, props));
+    };
+
+    var mapStateToProps = function mapStateToProps(state) {
+      if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
+        var modal = state.dialogReducer.dialogs[name];
+        var isOpen = modal && modal.open;
+        var data = modal ? modal.data : undefined;
+        return {
+          isOpen: isOpen,
+          data: data
+        };
+      }
+
+      return {
+        isOpen: false,
+        data: {}
+      };
+    };
+
+    var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
+      return {
+        toggle: function toggle() {
+          dispatch(actions_toggleDialog(name));
+        },
+        onOpened: function onOpened() {
+          props.onOpened && props.onOpened();
+        },
+        onClosed: function onClosed() {
+          props.onClosed && props.onClosed();
+        }
+      };
+    };
+
+    return Object(external_react_redux_["connect"])(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModalContainer);
+  };
 };
 
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
+redux_reactstrap_modal_reduxReactstrapModal.propTypes = {
+  settings: external_prop_types_default.a.shape({
+    name: external_prop_types_default.a.string.isRequired
+  }).isRequired
+};
+/* harmony default export */ var redux_reactstrap_modal = (redux_reactstrap_modal_reduxReactstrapModal);
+// EXTERNAL MODULE: external "seamless-immutable"
+var external_seamless_immutable_ = __webpack_require__(5);
+var external_seamless_immutable_default = /*#__PURE__*/__webpack_require__.n(external_seamless_immutable_);
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
+// EXTERNAL MODULE: external "normalizr"
+var external_normalizr_ = __webpack_require__(1);
 
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+// CONCATENATED MODULE: ./src/schemas.js
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var dialogSchema = new external_normalizr_["schema"].Entity('dialogs', undefined, {
+  idAttribute: 'name'
 });
-exports.dialogSchema = undefined;
+// CONCATENATED MODULE: ./src/reducer.js
 
-var _normalizr = __webpack_require__(3);
 
-var dialogSchema = exports.dialogSchema = new _normalizr.schema.Entity('dialogs', undefined, { idAttribute: 'name' });
+
+
+var initialState = external_seamless_immutable_default()({
+  dialogs: {}
+});
+/* harmony default export */ var reducer = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var normalized = Object(external_normalizr_["normalize"])(action, {
+    dialog: dialogSchema
+  }).entities;
+
+  switch (action.type) {
+    case OPEN_DIALOG:
+      return state.merge(normalized, {
+        deep: true
+      });
+
+    case CLOSE_DIALOG:
+      return state.merge(normalized, {
+        deep: true
+      });
+
+    case TOGGLE_DIALOG:
+      return state.updateIn(["dialogs", action.dialog.name, "open"], function (open) {
+        return !open;
+      });
+
+    default:
+      return state;
+  }
+});
+// CONCATENATED MODULE: ./src/index.js
+/* concated harmony reexport dialogReducer */__webpack_require__.d(__webpack_exports__, "dialogReducer", function() { return reducer; });
+/* concated harmony reexport openDialog */__webpack_require__.d(__webpack_exports__, "openDialog", function() { return openDialog; });
+/* concated harmony reexport closeDialog */__webpack_require__.d(__webpack_exports__, "closeDialog", function() { return closeDialog; });
+
+
+
+/* harmony default export */ var src = __webpack_exports__["default"] = (redux_reactstrap_modal);
+
 
 /***/ })
 /******/ ]);
 });
+//# sourceMappingURL=redux.reactstrap.modal.js.map

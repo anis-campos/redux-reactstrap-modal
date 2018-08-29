@@ -23,6 +23,21 @@ describe('modal reducer', () => {
         expect(reducer(undefined, {})).to.deep.equal(initialState);
     });
 
+    it('should return the initial state, with values', () => {
+        const initialState = {
+            i: {
+                have: "some values"
+            },
+            dialogs: {}
+        };
+        const state = {
+            i: {
+                have: "some values"
+            }
+        };
+        expect(reducer(state, {})).to.deep.equal(initialState);
+    });
+
 
     it('should handle 1 OPEN_DIALOG', () => {
         const state = reducer(undefined, actions.openDialog('modal-1'));

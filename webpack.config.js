@@ -54,7 +54,7 @@ module.exports = {
         template: require('html-webpack-template'),
         appMountId: 'app',
     }),
-        new OpenBrowserPlugin({url: 'http://localhost:9000'}),
+        new OpenBrowserPlugin({url: 'http://localhost:9000/webpack-dev-server/'}),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',

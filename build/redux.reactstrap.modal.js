@@ -1,10 +1,10 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("prop-types"), require("normalizr"), require("seamless-immutable"), require("react"), require("react-redux"), require("reactstrap"));
+		module.exports = factory(require("prop-types"), require("normalizr"), require("react"), require("seamless-immutable"), require("react-redux"), require("reactstrap"));
 	else if(typeof define === 'function' && define.amd)
-		define(["prop-types", "normalizr", "seamless-immutable", "react", "react-redux", "reactstrap"], factory);
+		define(["prop-types", "normalizr", "react", "seamless-immutable", "react-redux", "reactstrap"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("prop-types"), require("normalizr"), require("seamless-immutable"), require("react"), require("react-redux"), require("reactstrap")) : factory(root["prop-types"], root["normalizr"], root["seamless-immutable"], root["react"], root["react-redux"], root["reactstrap"]);
+		var a = typeof exports === 'object' ? factory(require("prop-types"), require("normalizr"), require("react"), require("seamless-immutable"), require("react-redux"), require("reactstrap")) : factory(root["prop-types"], root["normalizr"], root["react"], root["seamless-immutable"], root["react-redux"], root["reactstrap"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__5__) {
@@ -138,7 +138,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(3);
+var external_react_ = __webpack_require__(2);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 
 // EXTERNAL MODULE: external "react-redux"
@@ -203,57 +203,78 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+/**
+ * HOC function that connects {Modal} to {redux}.
+ * @param store: react-redux store
+ * @param settings: settings to apply to the {Modal} object. "name" is required. see {@link https://reactstrap.github.io/components/modals/}
+ * @returns {function(*): function(*): *}
+ */
 
-var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(settings) {
+var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(store, settings) {
   var name = settings.name;
-  return function (WrappedComponent) {
-    var ReduxReactstrapModalContainer = function ReduxReactstrapModalContainer(props) {
-      return external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, props), external_react_default.a.createElement(WrappedComponent, props));
-    };
 
-    var mapStateToProps = function mapStateToProps(state) {
-      if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
-        var modal = state.dialogReducer.dialogs[name];
-        var isOpen = modal && modal.open;
-        var data = modal ? modal.data : undefined;
-        return {
-          isOpen: isOpen,
-          data: data
-        };
+  var mapStateToProps = function mapStateToProps(state) {
+    if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
+      var modal = state.dialogReducer.dialogs[name];
+      var isOpen = modal.open;
+      var data = modal.data;
+      return {
+        isOpen: isOpen,
+        data: data
+      };
+    } //default state
+
+
+    return {
+      isOpen: false,
+      data: {}
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      toggle: function toggle() {
+        dispatch(actions_toggleDialog(name));
       }
+    };
+  };
 
-      return {
-        isOpen: false,
-        data: {}
-      };
+  var modalProps = function modalProps(props) {
+    //cloning props to remove unnecessary props for Modal ( they are propagated to divs and cause exceptions )
+    var clone = Object.assign({}, props); //redux props
+
+    delete clone.store;
+    delete clone.storeSubscription; //props for the body
+
+    delete clone.data;
+    delete clone.toggle;
+    return clone;
+  };
+
+  return function (ModalContent) {
+    var ReduxReactModal = function ReduxReactModal(props) {
+      return external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, modalProps()), external_react_default.a.createElement(ModalContent, props));
     };
 
-    var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
-      return {
-        toggle: function toggle() {
-          dispatch(actions_toggleDialog(name));
-        },
-        onOpened: function onOpened() {
-          props.onOpened && props.onOpened();
-        },
-        onClosed: function onClosed() {
-          props.onClosed && props.onClosed();
-        }
-      };
-    };
+    var ConnectReduxReactModal = Object(external_react_redux_["connect"])(mapStateToProps, mapDispatchToProps)(ReduxReactModal); //this step is required since react-redux v6
 
-    return Object(external_react_redux_["connect"])(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModalContainer);
+    return function (props) {
+      return external_react_default.a.createElement(ConnectReduxReactModal, _extends({}, props, {
+        store: store
+      }));
+    };
   };
 };
 
 redux_reactstrap_modal_reduxReactstrapModal.propTypes = {
+  store: external_prop_types_default.a.object.isRequired,
   settings: external_prop_types_default.a.shape({
     name: external_prop_types_default.a.string.isRequired
   }).isRequired
 };
 /* harmony default export */ var redux_reactstrap_modal = (redux_reactstrap_modal_reduxReactstrapModal);
 // EXTERNAL MODULE: external "seamless-immutable"
-var external_seamless_immutable_ = __webpack_require__(2);
+var external_seamless_immutable_ = __webpack_require__(3);
 var external_seamless_immutable_default = /*#__PURE__*/__webpack_require__.n(external_seamless_immutable_);
 
 // EXTERNAL MODULE: external "normalizr"

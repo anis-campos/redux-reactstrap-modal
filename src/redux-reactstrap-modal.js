@@ -15,41 +15,55 @@ const reduxReactstrapModal = (store, settings) => {
 
     const {name} = settings;
 
-    return (WrappedComponent) => {
+    const mapStateToProps = (state) => {
+        if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
+            const modal = state.dialogReducer.dialogs[name];
+            const isOpen = modal.open;
+            const data = modal.data;
+            return {isOpen, data};
+        }
 
-        const ReduxReactstrapModalContainer = (props) => {
+        //default state
+        return {isOpen: false, data: {}};
+    };
+
+    const mapDispatchToProps = (dispatch) => ({
+        toggle: () => {
+            dispatch(toggleDialog(name));
+        }
+    });
+
+
+    const modalProps = (props) => {
+        //cloning props to remove unnecessary props for Modal ( they are propagated to divs and cause exceptions )
+        const clone = Object.assign({}, props);
+
+        //redux props
+        delete clone.store;
+        delete clone.storeSubscription;
+
+        //props for the body
+        delete clone.data;
+        delete clone.toggle;
+
+        return clone;
+    };
+
+    return (ModalContent) => {
+
+        const ReduxReactModal = (props) => {
             return (
-                <Modal {...settings} {...props}>
-                    <WrappedComponent {...props} />
+                <Modal {...settings} {...modalProps()}>
+                    <ModalContent {...props}  />
                 </Modal>
             );
         };
 
-        const mapStateToProps = (state) => {
-            if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
-                const modal = state.dialogReducer.dialogs[name];
-                const isOpen = modal && modal.open;
-                const data = modal ? modal.data : undefined;
-                return {isOpen, data};
-            }
-            return {isOpen: false, data: {}};
-        };
+        const ConnectReduxReactModal = connect(mapStateToProps, mapDispatchToProps)(ReduxReactModal);
 
-        const mapDispatchToProps = (dispatch, props) => ({
-            toggle: () => {
-                dispatch(toggleDialog(name));
-            },
+        //this step is required since react-redux v6
+        return (props) => <ConnectReduxReactModal {...props} store={store}/>;
 
-            onOpened: () => {
-                props.onOpened && props.onOpened();
-            },
-
-            onClosed: () => {
-                props.onClosed && props.onClosed();
-            }
-        });
-
-        return connect(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModalContainer);
 
     };
 };

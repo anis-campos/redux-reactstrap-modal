@@ -100,8 +100,9 @@ https://github.com/anis-campos/redux-reactstrap-modal/blob/feature/update_depend
 ## Tests
 Work in progress
 
-##Change Log
+## Change Log
 
 #### **v1.13**
+- Fix [issue 6](https://github.com/anis-campos/redux-reactstrap-modal/issues/6) : Incompatible with react-redux > 6
 
 

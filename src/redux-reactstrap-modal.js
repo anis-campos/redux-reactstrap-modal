@@ -4,7 +4,14 @@ import {Modal} from "reactstrap";
 import {toggleDialog} from "./actions";
 import PropTypes from 'prop-types';
 
-const reduxReactstrapModal = (settings) => {
+
+/**
+ * HOC function that connects {Modal} to {redux}.
+ * @param store: react-redux store
+ * @param settings: settings to apply to the {Modal} object. "name" is required. see {@link https://reactstrap.github.io/components/modals/}
+ * @returns {function(*): function(*): *}
+ */
+const reduxReactstrapModal = (store, settings) => {
 
     const {name} = settings;
 
@@ -48,6 +55,7 @@ const reduxReactstrapModal = (settings) => {
 };
 
 reduxReactstrapModal.propTypes = {
+    store: PropTypes.object.isRequired,
     settings: PropTypes.shape({
         name: PropTypes.string.isRequired,
     }).isRequired

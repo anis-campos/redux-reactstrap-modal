@@ -32,7 +32,7 @@ const BasicDialog = ({toggle}) => (
     </div>
 );
 
-const Dialog = reduxDialog({
+const Dialog = reduxDialog(store,{
     name: 'testDialog'
 })(BasicDialog);
 

@@ -58,9 +58,11 @@ const BasicDialog = () => (
   </div>
 )
 
-const Dialog = reduxDialog({
-  name: 'signupDialog' // unique name - you can't have two dialogs with the same name
-})(BasicDialog);
+const Dialog = reduxDialog(
+    store, // [NEW] needed to be compatible with react-redux > 6
+    {
+    name: 'signupDialog' // unique name - you can't have two dialogs with the same name
+    })(BasicDialog);
 ```
 
 ### Step 3
@@ -73,7 +75,7 @@ const MyComponent = () => (
 )
 ```
 
-## Options
+## Modal Props
 
 The reduxDialog method only requires the name property to work. The rest of the optional properties can be Any valid [reactstraps's modal options](https://reactstrap.github.io/components/modals/).
 
@@ -83,6 +85,24 @@ A unique id for this dialog
 #### `data` : object *[Optional]*
 A data object that will be passed to the modal as a property. Usefull to send data from the modal parent
 
+## Modal Content Props
+The content wrapped inside the modal receive the additional props :
+
+#### `toggle`: function ()=>()
+This will toggle the dialog. Canbe used for buttons like Dismiss, Cancel, Close, ...
+
+
+## Example
+
+see the file :
+https://github.com/anis-campos/redux-reactstrap-modal/blob/feature/update_dependencies/examples/index.js 
 
 ## Tests
 Work in progress
+
+## Change Log
+
+#### **v1.13**
+- Fix [issue 6](https://github.com/anis-campos/redux-reactstrap-modal/issues/6) : Incompatible with react-redux > 6
+
+

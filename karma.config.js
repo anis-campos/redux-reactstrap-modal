@@ -1,12 +1,11 @@
 // Karma configuration
 // Generated on Tue Oct 31 2017 22:04:35 GMT+0100 (CET)
 
-const webpack = require('./webpack.config');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("./webpack.config");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = (config) => {
-    const coverage = config.singleRun ? ['coverage'] : [];
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -31,7 +30,7 @@ module.exports = (config) => {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            ['./test/**/*.js']: ['webpack', 'sourcemap']
+            './test/**/*.js': ['webpack', 'sourcemap', 'coverage']
         },
 
         // A lot of people will reuse the same webpack config that they use
@@ -83,7 +82,7 @@ module.exports = (config) => {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['dots'],
+        reporters: ['dots', 'coverage'],
 
 
         // web server port
@@ -115,5 +114,5 @@ module.exports = (config) => {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
+    });
 };

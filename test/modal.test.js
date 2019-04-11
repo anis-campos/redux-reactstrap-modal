@@ -42,7 +42,7 @@ const BasicDialog = ({toggle, data}) => (
     </div>
 );
 
-const Dialog = reduxDialog({
+const Dialog = reduxDialog(store,{
     name: 'testDialog'
 })(BasicDialog);
 
@@ -57,12 +57,6 @@ const App = () => (
     </Provider>
 );
 describe('Testing Component', () => {
-    it('Should Mount', () => {
-        sinon.spy(Dialog.prototype, 'componentDidMount');
-        mount(<App/>);
-        expect(Dialog.prototype.componentDidMount).to.have.property('callCount', 1);
-        Dialog.prototype.componentDidMount.restore();
-    });
 
     it('Should pass data', () => {
 

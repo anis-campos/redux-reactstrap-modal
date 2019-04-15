@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("prop-types"), require("normalizr"), require("react"), require("seamless-immutable"), require("react-redux"), require("reactstrap"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["prop-types", "normalizr", "react", "seamless-immutable", "react-redux", "reactstrap"], factory);
+		define([], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("prop-types"), require("normalizr"), require("react"), require("seamless-immutable"), require("react-redux"), require("reactstrap")) : factory(root["prop-types"], root["normalizr"], root["react"], root["seamless-immutable"], root["react-redux"], root["reactstrap"]);
+		var a = factory();
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__5__) {
+})(window, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,61 +91,62 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
+module.exports = require("prop-types");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
+module.exports = require("normalizr");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+module.exports = require("seamless-immutable");
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
+module.exports = require("react");
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
+module.exports = require("react-redux");
 
 /***/ }),
-/* 5 */
+/* 5 */,
+/* 6 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
+module.exports = require("reactstrap");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(2);
+var external_react_ = __webpack_require__(3);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 
 // EXTERNAL MODULE: external "react-redux"
 var external_react_redux_ = __webpack_require__(4);
 
 // EXTERNAL MODULE: external "reactstrap"
-var external_reactstrap_ = __webpack_require__(5);
+var external_reactstrap_ = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./src/constants.js
 var OPEN_DIALOG = 'OPEN_DIALOG';
@@ -274,7 +275,7 @@ redux_reactstrap_modal_reduxReactstrapModal.propTypes = {
 };
 /* harmony default export */ var redux_reactstrap_modal = (redux_reactstrap_modal_reduxReactstrapModal);
 // EXTERNAL MODULE: external "seamless-immutable"
-var external_seamless_immutable_ = __webpack_require__(3);
+var external_seamless_immutable_ = __webpack_require__(2);
 var external_seamless_immutable_default = /*#__PURE__*/__webpack_require__.n(external_seamless_immutable_);
 
 // EXTERNAL MODULE: external "normalizr"

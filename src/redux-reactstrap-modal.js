@@ -15,6 +15,7 @@ const reduxReactstrapModal = (store, settings) => {
 
     const {name} = settings;
 
+
     const mapStateToProps = (state) => {
         if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
             const modal = state.dialogReducer.dialogs[name];

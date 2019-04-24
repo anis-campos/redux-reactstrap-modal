@@ -10,7 +10,7 @@ A Higher Order Component using react-redux to keep dialog state in a Redux store
 ## Example
 
 Clone this repo then run:
-```javascript
+```bash
 npm install
 npm start
 ```
@@ -50,6 +50,7 @@ const store = createStore(reducer);
 
 Decorate your component with reduxDialog.
 ```js
+import {connect} from 'react-redux';
 import reduxDialog from 'redux-reactstrap-modal';
 
 const BasicDialog = () => (
@@ -59,7 +60,7 @@ const BasicDialog = () => (
 )
 
 const Dialog = reduxDialog(
-    store, // [NEW] needed to be compatible with react-redux > 6
+    connect, // [NEW] needed to be compatible with react-redux > 6
     {
     name: 'signupDialog' // unique name - you can't have two dialogs with the same name
     })(BasicDialog);

@@ -90,7 +90,7 @@ A data object that will be passed to the modal as a property. Usefull to send da
 The content wrapped inside the modal receive the additional props :
 
 #### `toggle`: function ()=>()
-This will toggle the dialog. Canbe used for buttons like Dismiss, Cancel, Close, ...
+This will toggle the dialog. Can be used for buttons like Dismiss, Cancel, Close, ...
 
 
 ## Example

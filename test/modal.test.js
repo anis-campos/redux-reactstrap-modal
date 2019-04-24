@@ -1,11 +1,10 @@
 import {expect} from 'chai';
 import {configure, mount} from 'enzyme';
-import sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-16';
 import React, {Component} from "react";
 import reduxDialog, {dialogReducer, openDialog} from "../src";
 import {combineReducers, createStore} from "redux";
-import {Provider} from "react-redux";
+import {Provider,connect} from "react-redux";
 import {Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 configure({adapter: new Adapter()});
@@ -42,7 +41,7 @@ const BasicDialog = ({toggle, data}) => (
     </div>
 );
 
-const Dialog = reduxDialog(store,{
+const Dialog = reduxDialog(connect,{
     name: 'testDialog'
 })(BasicDialog);
 

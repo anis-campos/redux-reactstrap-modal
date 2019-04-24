@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -122,31 +122,17 @@ module.exports = require("react");
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
-
-/***/ }),
-/* 5 */,
-/* 6 */
-/***/ (function(module, exports) {
-
 module.exports = require("reactstrap");
 
 /***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(3);
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
-
-// EXTERNAL MODULE: external "react-redux"
-var external_react_redux_ = __webpack_require__(4);
-
 // EXTERNAL MODULE: external "reactstrap"
-var external_reactstrap_ = __webpack_require__(6);
+var external_reactstrap_ = __webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/constants.js
 var OPEN_DIALOG = 'OPEN_DIALOG';
@@ -196,22 +182,24 @@ function closeDialog(name) {
 closeDialog.propTypes = {
   name: external_prop_types_default.a.string.isRequired
 };
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(3);
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+
 // CONCATENATED MODULE: ./src/redux-reactstrap-modal.js
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
 
 
-
-
 /**
  * HOC function that connects {Modal} to {redux}.
- * @param store: react-redux store
- * @param settings: settings to apply to the {Modal} object. "name" is required. see {@link https://reactstrap.github.io/components/modals/}
+ * @param {function} connect: react-redux connect. Prevents de " Could not find store" error
+ * @param settings: settings to apply to the {Modal} object see {@link https://reactstrap.github.io/components/modals/}. "name" is required.
  * @returns {function(*): function(*): *}
  */
 
-var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(store, settings) {
+var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(connect, settings) {
   var name = settings.name;
 
   var mapStateToProps = function mapStateToProps(state) {
@@ -240,39 +228,15 @@ var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(
     };
   };
 
-  var modalProps = function modalProps(props) {
-    //cloning props to remove unnecessary props for Modal ( they are propagated to divs and cause exceptions )
-    var clone = Object.assign({}, props); //redux props
-
-    delete clone.store;
-    delete clone.storeSubscription; //props for the body
-
-    delete clone.data;
-    delete clone.toggle;
-    return clone;
-  };
-
   return function (ModalContent) {
-    var ReduxReactModal = function ReduxReactModal(props) {
-      return external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, modalProps()), external_react_default.a.createElement(ModalContent, props));
+    var ReduxReactstrapModal = function ReduxReactstrapModal(props) {
+      return external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, props), external_react_default.a.createElement(ModalContent, props));
     };
 
-    var ConnectReduxReactModal = Object(external_react_redux_["connect"])(mapStateToProps, mapDispatchToProps)(ReduxReactModal); //this step is required since react-redux v6
-
-    return function (props) {
-      return external_react_default.a.createElement(ConnectReduxReactModal, _extends({}, props, {
-        store: store
-      }));
-    };
+    return connect(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModal);
   };
 };
 
-redux_reactstrap_modal_reduxReactstrapModal.propTypes = {
-  store: external_prop_types_default.a.object.isRequired,
-  settings: external_prop_types_default.a.shape({
-    name: external_prop_types_default.a.string.isRequired
-  }).isRequired
-};
 /* harmony default export */ var redux_reactstrap_modal = (redux_reactstrap_modal_reduxReactstrapModal);
 // EXTERNAL MODULE: external "seamless-immutable"
 var external_seamless_immutable_ = __webpack_require__(2);

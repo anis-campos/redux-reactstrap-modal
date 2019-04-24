@@ -151,11 +151,12 @@ var TOGGLE_DIALOG = 'TOGGLE_DIALOG';
 /**
  * Open a modal
  * @param {string} name Name of the modal to open
- * @param {Object} data Data to send to the modal
+ * @param {Object} [data] Data to send to the modal
  * @return {{dialog: {data: *, name: *, open: boolean}, type: string}}
  */
 
-function openDialog(name, data) {
+function openDialog(name) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
   return {
     type: OPEN_DIALOG,
     dialog: {

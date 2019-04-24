@@ -3,10 +3,10 @@ import * as c from "./constants";
 /**
  * Open a modal
  * @param {string} name Name of the modal to open
- * @param {Object} data Data to send to the modal
+ * @param {Object} [data] Data to send to the modal
  * @return {{dialog: {data: *, name: *, open: boolean}, type: string}}
  */
-export function openDialog(name, data) {
+export function openDialog(name, data = undefined) {
     return {
         type: c.OPEN_DIALOG,
         dialog: {

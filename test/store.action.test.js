@@ -3,7 +3,7 @@ import * as c from '../src/constants';
 
 describe('Open dialog', () => {
     it('should create an action to open a dialog', () => {
-        expect(actions.openDialog('modal1')).to.deep.equal({
+        expect(actions.openDialog('modal1')).toEqual({
             type: c.OPEN_DIALOG,
             dialog: {
                 name: "modal1",
@@ -14,7 +14,7 @@ describe('Open dialog', () => {
     });
 
     it('should create an action to open a dialog with data', () => {
-        expect(actions.openDialog('modal1', {a: {nested: {object: "works"}}})).to.deep.equal({
+        expect(actions.openDialog('modal1', {a: {nested: {object: "works"}}})).toEqual({
             type: c.OPEN_DIALOG,
             dialog: {
                 name: "modal1",
@@ -27,7 +27,7 @@ describe('Open dialog', () => {
 
 describe('Close dialog', () => {
     it('should create an action to close a dialog', () => {
-        expect(actions.closeDialog('modal1')).to.deep.equal({
+        expect(actions.closeDialog('modal1')).toEqual({
             type: c.CLOSE_DIALOG,
             dialog: {
                 name: "modal1",

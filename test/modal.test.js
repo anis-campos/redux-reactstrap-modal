@@ -1,11 +1,9 @@
-import {expect} from 'chai';
-import {configure, mount} from 'enzyme';
-import sinon from 'sinon';
+import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React, {Component} from "react";
 import reduxDialog, {dialogReducer, openDialog} from "../src";
 import {combineReducers, createStore} from "redux";
-import {Provider} from "react-redux";
+import {Provider,connect} from "react-redux";
 import {Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
 configure({adapter: new Adapter()});
@@ -42,7 +40,7 @@ const BasicDialog = ({toggle, data}) => (
     </div>
 );
 
-const Dialog = reduxDialog(store,{
+const Dialog = reduxDialog(connect,{
     name: 'testDialog'
 })(BasicDialog);
 
@@ -60,11 +58,11 @@ describe('Testing Component', () => {
 
     it('Should pass data', () => {
 
-        const wrapper = mount(<App/>);
-        expect(wrapper.find(Dialog)).to.have.length(1);
-        expect(wrapper.find(Provider).props().store.getState().dialogReducer.dialogs).to.deep.equal({});
+        const wrapper = shallow(<App/>);
+        expect(wrapper.find(Dialog)).toHaveLength(1);
+        expect(wrapper.find(Provider).props().store.getState().dialogReducer.dialogs).toEqual({});
         wrapper.find('.openModal').simulate('click');
-        expect(wrapper.find(Provider).props().store.getState().dialogReducer.dialogs).to.deep.equal({
+        expect(wrapper.find(Provider).props().store.getState().dialogReducer.dialogs).toEqual({
             testDialog: {
                 name: "testDialog",
                 open: true,

@@ -1,54 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
+const uglifyJs = require('uglifyjs-webpack-plugin');
 
 
-module.exports = {
+const common = {
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
+            new uglifyJs({
                 include: /\.min\.js$/
             })
         ]
     },
-    entry: {
-        'redux.reactstrap.modal': path.join(__dirname, "src", "index.js"),
-        'redux.reactstrap.modal.min': path.join(__dirname, "src", "index.js")
-    },
-    output: {
-        path: path.join(__dirname, "build"),
-        libraryTarget: 'umd',
-        filename: "[name].js"
-    },
-
-    devtool: 'source-map',
-
-    externals: [
-        'bootstrap',
-        'normalizr',
-        'react',
-        'react-dom',
-        'react-redux',
-        'react-transition-group',
-        'reactstrap',
-        'redux',
-        'seamless-immutable',
-        'prop-types',
-        'jquery',
-        'popper.js'
-    ],
-
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"]
-                    }
-                }
+                use: ['babel-loader']
             },
             {
                 enforce: "pre",
@@ -58,26 +27,45 @@ module.exports = {
             }, {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
-            }, {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            },
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
             }
         ]
     },
-
+    devtool: 'source-map',
+    externals: [nodeExternals()],
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         })
     ]
 };
+
+const fontEnd = {
+    entry: {
+        'redux.reactstrap.modal': path.join(__dirname, "src", "index.js"),
+        'redux.reactstrap.modal.min': path.join(__dirname, "src", "index.js")
+    },
+    output: {
+        path: path.join(__dirname, "dist"),
+        libraryTarget: 'umd',
+        filename: "[name].js"
+    },
+
+};
+
+
+const backEnd = {
+    target: 'node',
+    entry: {
+        'redux.reactstrap.modal.node': path.join(__dirname, "src", "index.js"),
+    },
+    output: {
+        path: path.join(__dirname, "dist"),
+        filename: "[name].js",
+        libraryTarget: "commonjs2"
+    }
+};
+
+module.exports = [
+    Object.assign({}, common, fontEnd),
+    Object.assign({}, common, backEnd)
+];

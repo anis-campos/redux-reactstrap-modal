@@ -1,9 +1,12 @@
 language: node_js
 node_js:
-- node
-before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+  - "8"
+  - "9"
+  - "10"
+  - "11"
+  - node
+
+
 deploy:
   provider: npm
   email: dev@dasilvacamposanis.fr

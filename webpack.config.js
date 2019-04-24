@@ -54,17 +54,12 @@ module.exports = {
         template: require('html-webpack-template'),
         appMountId: 'app',
     }),
-        new OpenBrowserPlugin({url: 'http://localhost:9000/webpack-dev-server/'}),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
-        })
+        new OpenBrowserPlugin({url: 'http://localhost:9002/webpack-dev-server/'})
     ],
 
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         compress: true,
-        port: 9000
+        port: 9002
     }
 };

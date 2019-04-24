@@ -2,7 +2,7 @@ import React from "react";
 import {render} from "react-dom";
 import reduxDialog, {dialogReducer, openDialog} from "../src";
 import {combineReducers, createStore} from "redux";
-import {Provider} from "react-redux";
+import {Provider,connect} from "react-redux";
 import {Button,ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
@@ -32,7 +32,7 @@ const BasicDialog = ({toggle}) => (
     </div>
 );
 
-const Dialog = reduxDialog(store,{
+const Dialog = reduxDialog(connect,{
     name: 'testDialog'
 })(BasicDialog);
 

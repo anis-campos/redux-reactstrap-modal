@@ -14,38 +14,18 @@ module.exports = {
         filename: 'index.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
-        alias: {
-            jquery: 'jquery/src/jquery',
-            'sinon': 'sinon/pkg/sinon'
-        }
+        extensions: ['.js', '.jsx']
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }
+                use: ['babel-loader']
+
             }, {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
-            }, {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            }, {
-                test: /\.less$/,
-                use: [{
-                    loader: 'style-loader' // creates style nodes from JS strings
-                }, {
-                    loader: 'css-loader' // translates CSS into CommonJS
-                }, {
-                    loader: 'less-loader' // compiles Less to CSS
-                }]
             }
         ]
     },

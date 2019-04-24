@@ -1,0 +1,11 @@
+yarn.lock
+webpack.*
+karma.config.js
+.travis.yml
+.gitignore
+.eslintignore
+.eslintrc.js
+.babelrc
+test/
+node_modules/
+examples/

@@ -1,20 +1,16 @@
-import React from 'react';
-import {connect} from "react-redux";
 import {Modal} from "reactstrap";
 import {toggleDialog} from "./actions";
-import PropTypes from 'prop-types';
-
+import React from "react";
 
 /**
  * HOC function that connects {Modal} to {redux}.
- * @param store: react-redux store
- * @param settings: settings to apply to the {Modal} object. "name" is required. see {@link https://reactstrap.github.io/components/modals/}
+ * @param {function} connect: react-redux connect. Prevents de " Could not find store" error
+ * @param settings: settings to apply to the {Modal} object see {@link https://reactstrap.github.io/components/modals/}. "name" is required.
  * @returns {function(*): function(*): *}
  */
-const reduxReactstrapModal = (store, settings) => {
+const reduxReactstrapModal = (connect, settings) => {
 
     const {name} = settings;
-
 
     const mapStateToProps = (state) => {
         if (state.dialogReducer.dialogs !== undefined && state.dialogReducer.dialogs[name] !== undefined) {
@@ -35,45 +31,21 @@ const reduxReactstrapModal = (store, settings) => {
     });
 
 
-    const modalProps = (props) => {
-        //cloning props to remove unnecessary props for Modal ( they are propagated to divs and cause exceptions )
-        const clone = Object.assign({}, props);
-
-        //redux props
-        delete clone.store;
-        delete clone.storeSubscription;
-
-        //props for the body
-        delete clone.data;
-        delete clone.toggle;
-
-        return clone;
-    };
 
     return (ModalContent) => {
 
-        const ReduxReactModal = (props) => {
+        const ReduxReactstrapModal = (props) => {
             return (
-                <Modal {...settings} {...modalProps()}>
+                <Modal {...settings} {...props}>
                     <ModalContent {...props}  />
                 </Modal>
             );
         };
 
-        const ConnectReduxReactModal = connect(mapStateToProps, mapDispatchToProps)(ReduxReactModal);
-
-        //this step is required since react-redux v6
-        return (props) => <ConnectReduxReactModal {...props} store={store}/>;
+        return connect(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModal);
 
 
     };
-};
-
-reduxReactstrapModal.propTypes = {
-    store: PropTypes.object.isRequired,
-    settings: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-    }).isRequired
 };
 
 

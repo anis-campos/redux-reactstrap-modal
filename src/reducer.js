@@ -8,6 +8,12 @@ const initialState = Immutable({
     dialogs: {}
 });
 
+/**
+ * Create dialogs state reducer
+ * @param state
+ * @param action
+ * @return {{dialogs}|*}
+ */
 export default (state = initialState, action) => {
 
     const normalized = normalize(action, {
@@ -32,9 +38,7 @@ export default (state = initialState, action) => {
 
 
         case actions.TOGGLE_DIALOG:
-
             return state.updateIn(["dialogs", action.dialog.name, "open"], (open) => !open);
-
 
         default:
             return state;

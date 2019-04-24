@@ -6,7 +6,7 @@ import React from "react";
  * HOC function that connects {Modal} to {redux}.
  * @param {function} connect: react-redux connect. Prevents de " Could not find store" error
  * @param settings: settings to apply to the {Modal} object see {@link https://reactstrap.github.io/components/modals/}. "name" is required.
- * @returns {function(*): function(*): *}
+ * @returns {function(*): function(*): *} Connected modal
  */
 const reduxReactstrapModal = (connect, settings) => {
 

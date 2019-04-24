@@ -103,8 +103,15 @@ Work in progress
 
 ## Change Log
 
+#### **v1.14**
+- Fix [issue 5](https://github.com/anis-campos/redux-reactstrap-modal/issues/5) : Incompatible with SSR
+- replacing `store` by `connect`
+- fixing travis CI
+- 
+
 #### **v1.13**
 - Fix [issue 6](https://github.com/anis-campos/redux-reactstrap-modal/issues/6) : Incompatible with react-redux > 6
+- need to pass `store` to create the redux wrapper
 
 #### **v1.12**
 - Fix [issue 4](https://github.com/anis-campos/redux-reactstrap-modal/issues/4) : Uncaught TypeError: state.merge is not a function

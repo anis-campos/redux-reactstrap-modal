@@ -96,7 +96,7 @@ This will toggle the dialog. Can be used for buttons like Dismiss, Cancel, Close
 ## Example
 
 see the file :
-https://github.com/anis-campos/redux-reactstrap-modal/blob/feature/update_dependencies/examples/index.js 
+https://github.com/anis-campos/redux-reactstrap-modal/blob/develop/examples/index.js
 
 ## Tests
 Work in progress

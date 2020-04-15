@@ -1,14 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const publicPath = (mode) => {
+    if (mode === 'production')
+        return '/redux-reactstrap-modal/';
+    return '/';
+};
 
-module.exports = {
-    mode: 'development',
+module.exports = (env, { mode = 'production' }) => ({
+    mode,
     devtool: 'eval-source-map',
     entry: path.join(__dirname, 'examples', 'index.js'),
     output: {
-        path: path.join(__dirname, 'dist'),
-        publicPath: '/',
+        path: path.join(__dirname, 'build'),
+        publicPath: publicPath(mode),
         filename: 'index.js'
     },
     resolve: {
@@ -45,4 +50,4 @@ module.exports = {
         inline:true,
         hot:true
     }
-};
+});

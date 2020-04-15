@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 
 module.exports = {
@@ -25,20 +24,25 @@ module.exports = {
             }, {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.svg/,
+                use: ["svg-url-loader"]
             }
         ]
     },
     plugins: [new HtmlWebpackPlugin({
-        inject: false,
+        inject: true,
         template: require('html-webpack-template'),
         appMountId: 'app',
-    }),
-        new OpenBrowserPlugin({url: 'http://localhost:9002/webpack-dev-server/'})
+        title: 'My App',
+        mobile: true,
+        lang: 'en-US',
+    })
     ],
-
-    devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        compress: true,
-        port: 9002
+    devServer:{
+        open:true,
+        inline:true,
+        hot:true
     }
 };

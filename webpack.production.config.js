@@ -5,6 +5,7 @@ const uglifyJs = require('uglifyjs-webpack-plugin');
 
 
 const common = {
+    mode:"production",
     optimization: {
         minimizer: [
             new uglifyJs({

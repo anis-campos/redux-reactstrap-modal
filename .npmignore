@@ -9,3 +9,6 @@ karma.config.js
 test/
 node_modules/
 examples/
+jest.config.js
+.github/
+coverage/

@@ -12,3 +12,4 @@ examples/
 jest.config.js
 .github/
 coverage/
+build/

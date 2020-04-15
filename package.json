@@ -11,7 +11,7 @@
     "reactstrap",
     "redux"
   ],
-  "homepage": "https://github.com/anis-campos/redux-reactstrap-modal",
+  "homepage": "https://anis-campos.github.io/redux-reactstrap-modal/",
   "bugs": "https://github.com/anis-campos/redux-reactstrap-modal/issues",
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
     "build": "webpack --config webpack.production.config.js --progress",
     "build:watch": "webpack --config webpack.production.config.js --progress --watch",
     "start": "webpack-dev-server --mode development --config webpack.config.js --progress ",
+    "predeploy": "webpack --config webpack.config.js --progress",
+    "deploy": "gh-pages -d build",
     "pretest": "eslint .",
     "test": "jest"
   },
@@ -71,6 +73,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-node-externals": "^1.7.2",
+    "gh-pages": "^2.2.0"
   },
   "release-it": {
     "npm": false,

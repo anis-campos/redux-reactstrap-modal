@@ -21,9 +21,9 @@
   "author": "Anis Campos",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --mode production --config webpack.production.config.js --progress",
-    "build:watch": "NODE_ENV=production webpack --mode production --config webpack.production.config.js --progress --watch",
-    "dev": "webpack-dev-server --mode development --config webpack.config.js --content-base examples/ --progress --hot --inline --watch",
+    "build": "webpack --config webpack.production.config.js --progress",
+    "build:watch": "webpack --config webpack.production.config.js --progress --watch",
+    "start": "webpack-dev-server --mode development --config webpack.config.js --progress ",
     "pretest": "eslint .",
     "test": "jest"
   },
@@ -63,14 +63,14 @@
     "html-webpack-template": "^6.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "25.3.0",
-    "open-browser-webpack-plugin": "^0.0.5",
     "release-it": "^13.5.2",
     "style-loader": "^1.1.0",
+    "svg-url-loader": "^5.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
   },
   "release-it": {
     "npm": false,

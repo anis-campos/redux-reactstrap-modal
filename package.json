@@ -25,7 +25,7 @@
     "build:watch": "NODE_ENV=production webpack --mode production --config webpack.production.config.js --progress --watch",
     "dev": "webpack-dev-server --mode development --config webpack.config.js --content-base examples/ --progress --hot --inline --watch",
     "pretest": "eslint .",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
@@ -61,6 +61,7 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "html-webpack-plugin": "^4.2.0",
     "html-webpack-template": "^6.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "25.3.0",
     "open-browser-webpack-plugin": "^0.0.5",
     "release-it": "^13.5.2",

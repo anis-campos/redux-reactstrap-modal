@@ -5,35 +5,29 @@ module.exports = {
 
   clearMocks: true,
 
+  collectCoverage: true,
+
   coverageDirectory: "coverage",
 
-  // Activates notifications for test results
-  //notify: true,
+  collectCoverageFrom: [
+    "src/**/*.js"
+  ],
+  coveragePathIgnorePatterns: [
+    "index.js"
+  ],
 
-  // An enum that specifies notification mode. Requires { notify: true }
-  // notifyMode: "failure-change",
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest",
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/fileTransformer.js"
+  },
 
-  // Allows you to use a custom runner instead of Jest's default test runner
-  // runner: "jest-runner",
+  moduleNameMapper: {
+    "\\.(css|less)$": "identity-obj-proxy"
+  },
 
-  // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  testEnvironment: "jsdom",
 
-  // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  // snapshotSerializers: [],
 
-  // The test environment that will be used for testing
-  testEnvironment: "node",
-
-  // Indicates whether each individual test should be reported during the run
-  // verbose: null,
-
-  // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
-  // watchPathIgnorePatterns: [],
-
-  // Whether to use watchman for file crawling
-  // watchman: true,
 };

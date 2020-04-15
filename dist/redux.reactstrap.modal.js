@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -116,17 +116,41 @@ module.exports = require("react");
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("reactstrap");
+module.exports = require("core-js/modules/es.function.name");
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("reactstrap");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/modules/es.object.assign");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "dialogReducer", function() { return /* reexport */ reducer; });
+__webpack_require__.d(__webpack_exports__, "openDialog", function() { return /* reexport */ openDialog; });
+__webpack_require__.d(__webpack_exports__, "closeDialog", function() { return /* reexport */ closeDialog; });
+
+// EXTERNAL MODULE: external "core-js/modules/es.function.name"
+var es_function_name_ = __webpack_require__(3);
+
+// EXTERNAL MODULE: external "core-js/modules/es.object.assign"
+var es_object_assign_ = __webpack_require__(5);
+
 // EXTERNAL MODULE: external "reactstrap"
-var external_reactstrap_ = __webpack_require__(3);
+var external_reactstrap_ = __webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/constants.js
 /**
@@ -200,6 +224,9 @@ var external_react_ = __webpack_require__(2);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 
 // CONCATENATED MODULE: ./src/redux-reactstrap-modal.js
+
+
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
@@ -243,7 +270,7 @@ var redux_reactstrap_modal_reduxReactstrapModal = function reduxReactstrapModal(
 
   return function (ModalContent) {
     var ReduxReactstrapModal = function ReduxReactstrapModal(props) {
-      return external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, props), external_react_default.a.createElement(ModalContent, props));
+      return /*#__PURE__*/external_react_default.a.createElement(external_reactstrap_["Modal"], _extends({}, settings, props), /*#__PURE__*/external_react_default.a.createElement(ModalContent, props));
     };
 
     return connect(mapStateToProps, mapDispatchToProps)(ReduxReactstrapModal);
@@ -264,6 +291,7 @@ var dialogSchema = new external_normalizr_["schema"].Entity('dialogs', undefined
   idAttribute: 'name'
 });
 // CONCATENATED MODULE: ./src/reducer.js
+
 
 
 
@@ -312,9 +340,6 @@ var initialState = external_seamless_immutable_default()({
   }
 });
 // CONCATENATED MODULE: ./src/index.js
-/* concated harmony reexport dialogReducer */__webpack_require__.d(__webpack_exports__, "dialogReducer", function() { return reducer; });
-/* concated harmony reexport openDialog */__webpack_require__.d(__webpack_exports__, "openDialog", function() { return openDialog; });
-/* concated harmony reexport closeDialog */__webpack_require__.d(__webpack_exports__, "closeDialog", function() { return closeDialog; });
 
 
 

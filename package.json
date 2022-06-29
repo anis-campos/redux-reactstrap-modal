@@ -34,7 +34,7 @@
     "normalizr": "^3.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
+    "react-redux": "^8.0.2",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "seamless-immutable": "^7.1.4"
